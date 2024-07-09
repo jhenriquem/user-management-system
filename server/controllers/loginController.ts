@@ -5,18 +5,24 @@ import { validationUserI } from "../types/userTypes";
 export default async function loginController(req: Request, res: Response) {
 
   try {
+    if (!req.body) {
+      console.log("errr")
+      return res.status(400).json("ddkjn")
+    }
     const user: validationUserI = req.body
-    const validateUser = await loginUser(user)
 
-    if (validateUser.status) {
-      return res.status(200).json({ status: "Sucessful", tk: validateUser.tk })
+    const validateUser = await loginUser(user)
+    let statusCode: number = 500
+
+    switch (validateUser.status) {
+      case "Successful":
+        statusCode = 200
+        break;
+      case "Unauthenticated":
+        statusCode = 401
+        break;
     }
-    else if (!validateUser.status) {
-      return res.status(401).json({ status: "Unauthenticated", message: validateUser.message })
-    }
-    else {
-      return res.status(500).json({ status: "Error", message: validateUser.message })
-    }
+    return res.status(statusCode).json(validateUser)
   }
 
   catch (err: any) {

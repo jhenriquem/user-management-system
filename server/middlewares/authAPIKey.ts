@@ -7,7 +7,7 @@ export default function authAPIkey(req: Request, res: Response, next: NextFuncti
     ;
 
   if (!requestApiKey || requestApiKey !== apiKey) {
-    res.status(401).json({ message: 'Unauthorized' });
+    return res.status(401).json({ message: 'Unauthorized' });
   }
 
   next();
