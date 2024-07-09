@@ -7,7 +7,8 @@ export const checkUserExists = async (req: Request, res: Response, next: NextFun
     const { email } = req.body;
     const user = await userModel.findOne({ email });
 
-    if (!user) {
+
+    if (user) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
