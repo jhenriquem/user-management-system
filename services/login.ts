@@ -17,11 +17,11 @@ const loginUser = async (userData: validationUserI): Promise<ResponseServicesI> 
           process.env.SECRET_KEY_JWT as string, { expiresIn: "1h" }
         );
 
-        return { status: true, message: "Correct credentials", tk: token };
+        return { status: "Successful", message: "Correct credentials", tk: token };
       }
     }
 
-    return { status: false, message: "Incorrect credentials" };
+    return { status: "Unauthenticated", message: "Incorrect credentials" };
   } catch (err: any) {
     return { status: "Error", message: `Error logging in: ${err.message}` };
   }

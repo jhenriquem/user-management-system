@@ -7,13 +7,13 @@ export const checkUserExists = async (req: Request, res: Response, next: NextFun
     const { email } = req.body;
     const user = await userModel.findOne({ email });
 
-    if (user) {
-      return res.status(400).json('User already exists');
+    if (!user) {
+      return res.status(400).json({ message: 'User already exists' });
     }
 
     next();
   } catch (error) {
-    res.status(500).json({ message: 'Error checking user existence', error });
+    return res.status(500).json({ message: 'Error checking user existence', error: error });
   }
 };
 
