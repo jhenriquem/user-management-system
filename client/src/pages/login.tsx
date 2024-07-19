@@ -1,6 +1,4 @@
-import HeaderComponent from "../components/header";
-
-function LeftArticle() {
+function leftContainer() {
   return (
     <article className="w-full flex items-center  justify-center">
       <main className="sm:shadow-xl sm:h-auto sm:rounded-xl w-full sm:w-9/12 h-5/6 flex justify-center flex-col items-center gap-y-10 py-28 lg:rounded-l-lg">
@@ -21,7 +19,7 @@ function LeftArticle() {
             <a href="/register" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Cadastre-se</a>
           </div>
 
-          <button className="btn-home-stl">
+          <button className="btns">
             Login
           </button>
 
@@ -31,19 +29,19 @@ function LeftArticle() {
   );
 }
 
-function rightArticle() {
+function rightContainer() {
 
   return (
-    <article className="w-full h-1/2 md:h-full flex justify-center items-center">
+    <article className="w-full h-auto lg:h-full flex justify-center items-center">
       <img src="./login-flow.png" alt="fluxograma de home para as outras páginas" className="w-full max-w-2xl min-w-72" />
     </article>
   )
 }
 function LoginPage() {
   return (
-    <section className="w-full h-screen flex flex-col lg:flex-row gap-y-24">
-      {LeftArticle()}
-      {rightArticle()}
+    <section className="w-full h-screen flex flex-col lg:flex-row mt-20 lg:m-0 gap-y-24">
+      {leftContainer()}
+      {rightContainer()}
     </section>
   )
 }
