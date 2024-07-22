@@ -1,34 +1,27 @@
 import axios from "axios";
 import { userLoginI } from "../types/userTypes";
 
-interface LoginSvcI {
+interface promiseResponseI {
   status: string
   message: string
   tk?: string
 }
 
-async function LoginSvc(props: userLoginI): Promise<LoginSvcI> {
+async function loginService(data: userLoginI): Promise<promiseResponseI> {
   try {
     const apiURL = import.meta.env.VITE_API_URL
-    const path = "login"
-
-    const userCredentials: userLoginI = props
+    const path = "/login"
     const headers = {
-      Authentication: "Basic 8452ec51c3661c3f428e2ce0ccad52ae5ecb4689"
-    }
+      Authorization: `Basic ${import.meta.env.VITE_API_KEY}`,
+    };
 
-    const postResponse: LoginSvcI = await axios.post(
-      `${apiURL}${path}`,
-      userCredentials,
-      {
-        headers: headers
-      }
-    )
-    // Teste de reposta (temporario)
-    console.log(postResponse)
-    return postResponse
+    const postResponse = await axios.post(`${apiURL}${path}`, data, { headers })
+
+    const responseData = postResponse.data
+    return responseData
   } catch (err: any) {
-    return { status: "Erro", message: err.message }
+    console.log(err.response.data)
+    return { status: "Error", message: err.response.data.message }
   }
 }
-export default LoginSvc
+export default loginService

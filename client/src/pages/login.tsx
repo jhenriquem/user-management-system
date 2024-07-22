@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LoginSvc from "../service/loginService";
+import loginService from "../service/loginService";
 import { userLoginI } from "../types/userTypes";
 
 
@@ -8,14 +8,11 @@ function leftContainer() {
   const [password, setPassword] = useState<string>("")
 
   const loginAction = async ({ email, password }: userLoginI) => {
-    const response = await LoginSvc({ email, password })
+    const response = await loginService({ email, password })
 
     if (response?.status === "Successful") {
-      // Teste de reposta (temporario)
-      console.log(response)
-
-      //localStorage.setItem("jwtTK", response?.tk as string)
-      //window.location.href = "/profile"
+      localStorage.setItem("jwtTK", response?.tk as string)
+      window.location.href = "/profile"
     }
     else if (response?.status === "Error") {
       alert(response?.message)
