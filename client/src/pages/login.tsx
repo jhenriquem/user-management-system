@@ -1,5 +1,5 @@
 import { useState } from "react";
-import loginService from "../service/loginService";
+import loginService from "../services/loginService";
 import { userLoginI } from "../types/userTypes";
 
 
