@@ -7,7 +7,7 @@ const getUser = async (userId: string): Promise<ResponseServicesI> => {
 
     const user = await userModel.findOne(
       { _id: userId },
-      { name: 1, lastname: 1, date_of_birth: 1 }
+      { username: 1, lastname: 1, registration_date: 1 }
     );
     if (!user) return { status: "Not possible", message: "Unable to fetch user data" }
     return { status: "Successful", message: "Success finding user", data: user }
