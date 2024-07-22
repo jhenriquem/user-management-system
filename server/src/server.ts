@@ -25,7 +25,7 @@ export default class Server {
     this.connectDB();
 
     // Allows the client to connect to the api through a hosting service
-    this.app.set("trust proxy", true)
+    this.app.set("trust proxy", 3)
 
     //calls functions related to api and jwt keys
     this.generateApiKey();
