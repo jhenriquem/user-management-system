@@ -1,4 +1,27 @@
+import { useState } from "react";
+import LoginSvc from "../service/loginService";
+import { userLoginI } from "../types/userTypes";
+
+
 function leftContainer() {
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+
+  const loginAction = async ({ email, password }: userLoginI) => {
+    const response = await LoginSvc({ email, password })
+
+    if (response?.status === "Successful") {
+      // Teste de reposta (temporario)
+      console.log(response)
+
+      //localStorage.setItem("jwtTK", response?.tk as string)
+      //window.location.href = "/profile"
+    }
+    else if (response?.status === "Error") {
+      alert(response?.message)
+    }
+  }
+
   return (
     <article className="w-full flex items-center  justify-center">
       <main className="sm:shadow-xl sm:h-auto sm:rounded-xl w-full sm:w-9/12 h-5/6 flex justify-center flex-col items-center gap-y-10 py-28 lg:rounded-l-lg">
@@ -6,10 +29,14 @@ function leftContainer() {
         <div className="flex flex-col w-full items-center justify-center gap-y-6">
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             className="p-3 w-4/5 bg-gray-100 rounded-md outline-0"
           />
           <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Password"
             className="p-3 w-4/5 bg-gray-100 rounded-md outline-0"
@@ -19,7 +46,7 @@ function leftContainer() {
             <a href="/register" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Cadastre-se</a>
           </div>
 
-          <button className="btns">
+          <button className="btns" onClick={() => { loginAction({ email, password }) }}>
             Login
           </button>
 
