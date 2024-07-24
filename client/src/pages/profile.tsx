@@ -20,7 +20,7 @@ function ProfilePage() {
     const response = await loadProfile()
 
     userName = response.username
-    registrationDate = response.date_of_birth
+    registrationDate = response.registration_date
   }
   load()
 
