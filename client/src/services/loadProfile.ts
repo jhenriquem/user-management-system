@@ -15,11 +15,8 @@ async function loadProfile() {
       window.location.href = "/"
     }
     else {
-
       const response = await axios.get(`${apiURL}${path}`, { headers })
-      console.log(response.data.data)
       return response.data.data
-
     }
   }
   catch (err: any) {

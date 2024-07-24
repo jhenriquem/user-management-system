@@ -39,8 +39,8 @@ function leftContainer() {
             className="p-3 w-4/5 bg-gray-100 rounded-md outline-0"
           />
           <div className="text-center">
-            <p>Se ainda não tiver uma conta </p>
-            <a href="/register" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Cadastre-se</a>
+            <p>Don't have an account? </p>
+            <a href="/register" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Register</a>
           </div>
 
           <button className="btns" onClick={() => { loginAction({ email, password }) }}>

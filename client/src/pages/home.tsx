@@ -6,7 +6,7 @@ function btns() {
       }}> Login</button>
       <button className="btns" onClick={() => {
         window.location.href = "/register"
-      }}> Cadastre-se</button>
+      }}> Register</button>
     </div>
   )
 }
@@ -16,8 +16,8 @@ function leftContainer() {
     <article className="w-full h-1/2 md:h-full flex flex-col justify-center items-center">
       <div className="flex flex-col gap-y-8 items-center md:items-start">
         <div>
-          <h2 className="text-3xl font-semibold mb-4 text-center md:text-start">Olá, tudo bem ?</h2>
-          <p className="text-center">Cadastre-se ou faça login para usar nossos serviços</p>
+          <h2 className="text-3xl font-semibold mb-4 text-center md:text-start">Hi! how are you ?</h2>
+          <p className="text-center">Register or log in to use our services</p>
         </div>
         {btns()}
       </div>

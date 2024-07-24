@@ -1,26 +1,30 @@
+import { useState } from "react"
 import loadProfile from "../services/loadProfile"
 
 function leftContainer(userName: string, registrationDate: string) {
   return (
-    <article className="flex flex-col h-1/2 md:h-full items-center justify-center w-full md:w-1/2">
-      <h1 className="text-2xl font-semibold">Olá {userName},tudo bem ? </h1>
-      <p className="font-semibold">Você se registrou em nosso sistema em {registrationDate}</p>
+    <article className="flex flex-col h-1/2 lg:h-full items-center justify-center lg:w-1/2 ">
+      <h1 className="text-2xl font-semibold">Hi {userName},all good ? ? </h1>
+      <p className="font-semibold">You registered in our system at {registrationDate}</p>
     </article>
   )
 
 }
 
-
 function ProfilePage() {
 
-  let userName: string = ""
-  let registrationDate: string = "";
+  const [userName, setuserName] = useState<string>("")
+  const [registrationDate, setregistrationDate] = useState<string>("")
 
   const load = async () => {
     const response = await loadProfile()
 
-    userName = response.username
-    registrationDate = response.registration_date
+    setuserName(response.name)
+
+
+    const date = new Date(response.registration_date as string)
+    const datearray = date.toUTCString().slice(0, 16)
+    setregistrationDate(datearray)
   }
   load()
 

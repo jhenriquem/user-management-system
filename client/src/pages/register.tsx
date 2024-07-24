@@ -2,46 +2,46 @@ function leftContainer() {
   return (
     <article className="w-full flex items-center  justify-center">
       <main className="sm:shadow-xl sm:h-auto sm:rounded-xl w-full sm:w-9/12 h-5/6 flex justify-center flex-col items-center gap-y-10 py-8 lg:rounded-l-lg">
-        <h1 className="font-semibold text-4xl">Cadastre-se</h1>
+        <h1 className="font-semibold text-4xl">Register</h1>
         <div className="flex flex-col w-full justify-center  px-[10%]">
 
-          <label>Nome</label>
+          <label>Name</label>
           <input
             type="text"
             placeholder="João, Maria, Carlos, ..."
             className="inputs"
           />
-          <label>Sobrenome</label>
+          <label>Lastname</label>
           <input
             type="text"
             placeholder="Silva, Oliveira, Santos, ..."
             className="inputs"
           />
-          <label>Data de nascimento</label>
+          <label>Birthdate</label>
           <input
             type="date"
-            placeholder="Data de nascimento"
+            placeholder="Birthdate"
             className="inputs"
           />
           <label>Email</label>
           <input
             type="email"
-            placeholder="exemplo@gmail.com"
+            placeholder="exemple@gmail.com"
             className="inputs"
           />
-          <label>Senha</label>
+          <label>Password</label>
           <input
             type="password"
-            placeholder="exemplo: 2jdljvo/33"
+            placeholder="exemple: 2jdljvo/33"
             className="inputs"
           />
           <div className="text-center">
-            <p>Já tem uma conta ?</p>
+            <p>Do you have an account ?</p>
             <a href="/login" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Login</a>
           </div>
 
           <button className="btns self-center mt-6">
-            Cadastre-se
+            Register
           </button>
 
         </div>
