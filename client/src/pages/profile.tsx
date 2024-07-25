@@ -1,5 +1,5 @@
 import { useState } from "react"
-import loadProfile from "../services/loadProfile"
+import getUserData from "../services/getUserData"
 
 function leftContainer(userName: string, registrationDate: string) {
   return (
@@ -17,7 +17,7 @@ function ProfilePage() {
   const [registrationDate, setregistrationDate] = useState<string>("")
 
   const load = async () => {
-    const response = await loadProfile()
+    const response = await getUserData()
 
     setuserName(response.name)
 

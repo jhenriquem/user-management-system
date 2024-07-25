@@ -1,4 +1,36 @@
+import { useState } from "react";
+import registerUser from "../services/registerUser";
+import { userRegisterI } from "../types/userTypes";
+
+
 function leftContainer() {
+
+  const [message, setMessage] = useState<string>("")
+
+  const [name, setName] = useState<string>("")
+  const [lastname, setLastname] = useState<string>("")
+  const [date, setDate] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+  const [email, setEmail] = useState<string>("")
+
+  const registerAction = async () => {
+    const userData: userRegisterI = {
+      name: name,
+      lastname: lastname,
+      date_of_birth: date as string,
+      email: email,
+      password: password
+    }
+    const response = await registerUser(userData)
+
+    if (response.status === "Successful") {
+      alert(response.message)
+      window.location.href = "/login"
+    }
+    else {
+      setMessage(response.message)
+    }
+  }
   return (
     <article className="w-full flex items-center  justify-center">
       <main className="sm:shadow-xl sm:h-auto sm:rounded-xl w-full sm:w-9/12 h-5/6 flex justify-center flex-col items-center gap-y-10 py-8 lg:rounded-l-lg">
@@ -8,29 +40,41 @@ function leftContainer() {
           <label>Name</label>
           <input
             type="text"
+            value={name}
+            onChange={(e) => { setName(e.target.value) }}
             placeholder="João, Maria, Carlos, ..."
             className="inputs"
           />
           <label>Lastname</label>
           <input
             type="text"
+            value={lastname}
+            onChange={(e) => { setLastname(e.target.value) }}
             placeholder="Silva, Oliveira, Santos, ..."
             className="inputs"
           />
           <label>Birthdate</label>
           <input
             type="date"
+            value={date}
+            onChange={(e) => { setDate(e.target.value) }}
+            id="date-of-birth"
             placeholder="Birthdate"
             className="inputs"
           />
           <label>Email</label>
           <input
             type="email"
+            id="email"
+            value={email}
+            onChange={(e) => { setEmail(e.target.value) }}
             placeholder="exemple@gmail.com"
             className="inputs"
           />
           <label>Password</label>
           <input
+            value={password}
+            onChange={(e) => { setPassword(e.target.value) }}
             type="password"
             placeholder="exemple: 2jdljvo/33"
             className="inputs"
@@ -40,7 +84,8 @@ function leftContainer() {
             <a href="/login" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Login</a>
           </div>
 
-          <button className="btns self-center mt-6">
+          <span className="font-semibold text-center text-red-500 text-sm">{message}</span>
+          <button onClick={() => { registerAction() }} className="btns self-center mt-6">
             Register
           </button>
 

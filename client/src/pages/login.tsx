@@ -4,6 +4,7 @@ import { userLoginI } from "../types/userTypes";
 
 
 function leftContainer() {
+  const [message, setMessage] = useState<string>("")
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
 
@@ -15,7 +16,7 @@ function leftContainer() {
       window.location.href = "/profile"
     }
     else if (response?.status === "Error") {
-      alert(response?.message)
+      setMessage(response?.message)
     }
   }
 
@@ -43,6 +44,7 @@ function leftContainer() {
             <a href="/register" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Register</a>
           </div>
 
+          <span className="text-center text-red-500 text-sm font-semibold">{message}</span>
           <button className="btns" onClick={() => { loginAction({ email, password }) }}>
             Login
           </button>

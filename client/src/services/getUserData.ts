@@ -1,5 +1,5 @@
 import axios from "axios"
-async function loadProfile() {
+async function getUserData() {
   try {
 
     const token = localStorage.getItem("jwtTK")
@@ -25,4 +25,4 @@ async function loadProfile() {
   }
 }
 
-export default loadProfile
+export default getUserData
