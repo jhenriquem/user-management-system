@@ -16,6 +16,6 @@ export default async function registerController(req: Request, res: Response) {
 
     return res.status(statusCode).json(resRegister);
   } catch (error) {
-    return res.status(500).json({ status: "Error", message: `Error registering user : ${error} ` });
+    return res.status(500).json({ message: "Error registering user", error: error });
   }
 }
