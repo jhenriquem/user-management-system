@@ -1,21 +1,17 @@
 import { Request, Response } from "express";
-import registerUser from "../services/register";
+import registerUser from "../services/registerUser";
 
 export default async function registerController(req: Request, res: Response) {
   try {
-    if (!req.body) {
-      console.log("errr")
-      return res.status(400).json("ddkjn")
-    }
     const newUser = req.body;
 
-    const resRegister = await registerUser(newUser)
-    let statusCode: number = 500
+    const responseOfRegister = await registerUser(newUser)
 
-    if (resRegister.status === "Successful") statusCode = 201
-
-    return res.status(statusCode).json(resRegister);
-  } catch (error) {
-    return res.status(500).json({ message: "Error registering user", error: error });
+    if (responseOfRegister.status === "Error") {
+      return res.status(500).json({ statusMessage: "Error trying to register user", error: responseOfRegister.error });
+    }
+    return res.status(201).json({ statusMessage: "Success registering new user" });
+  } catch (err: any) {
+    return res.status(500).json({ message: "Error trying to register user", error: err.message });
   }
 }

@@ -1,16 +1,17 @@
 import { Request, Response } from "express";
-import getUser from "../services/getUser";
+import findUser from "../services/findUser";
 
 export default async function profileController(req: Request, res: Response) {
   try {
     const id = req.body.userId
-    const response = await getUser(id)
-    let statusCode = 500
+    const response = await findUser(id)
 
-    if (response.status === "Successful") statusCode = 200
+    if (response.status === "Error") {
+      return res.status(500).json({ statusMessage: "Error when trying to find the user", error: response.error })
+    }
 
-    return res.status(statusCode).json(response)
-  } catch (err) {
-    return res.status(500).json({ message: "Error when trying to return user data" })
+    return res.status(200).json({ message: response })
+  } catch (err: any) {
+    return res.status(500).json({ statusMessage: "Error when trying to find the user", error: err.message })
   }
 }

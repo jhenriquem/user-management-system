@@ -1,10 +1,9 @@
 import jwt from "jsonwebtoken";
 import userModel from "../models/userModel";
-import { validationUserI } from "../types/userTypes";
+import { authUserI } from "../types/userTypes";
 import bcrypt from "bcrypt";
-import ResponseServicesI from "../types/resType";
 
-const loginUser = async (userData: validationUserI): Promise<ResponseServicesI> => {
+const authUser = async (userData: authUserI) => {
   try {
     const user = await userModel.findOne({ email: userData.email });
 
@@ -17,15 +16,14 @@ const loginUser = async (userData: validationUserI): Promise<ResponseServicesI> 
           process.env.SECRET_KEY_JWT as string, { expiresIn: "1h" }
         );
 
-        return { status: "Successful", message: "Correct credentials", tk: token };
+        return { status: "Authenticated", tk: token };
       }
     }
-
-    return { status: "Unauthenticated", message: "Incorrect credentials" };
+    return { status: "Unauthenticated" };
   } catch (err: any) {
-    return { status: "Error", message: `Error logging in: ${err.message}` };
+    return { status: "Error", message: err.message };
   }
 };
 
-export default loginUser;
+export default authUser;
 

@@ -7,13 +7,7 @@ export interface UserInterface {
   password: string
 }
 
-export interface getUserI {
-  name: string
-  lastname: string
-  date_of_birth: Date
-}
-
-export interface validationUserI {
+export interface authUserI {
   email: string
   password: string
 }

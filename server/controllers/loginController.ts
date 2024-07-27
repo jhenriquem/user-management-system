@@ -1,32 +1,32 @@
 import { Request, Response } from "express";
-import loginUser from "../services/login";
-import { validationUserI } from "../types/userTypes";
+import authUser from "../services/authUser";
+import { authUserI } from "../types/userTypes";
 
 export default async function loginController(req: Request, res: Response) {
 
   try {
-    if (!req.body) {
-      console.log("errr")
-      return res.status(400).json("ddkjn")
-    }
-    const user: validationUserI = req.body
+    const user: authUserI = req.body
 
-    const validateUser = await loginUser(user)
-    let statusCode: number = 500
+    const validateUser = await authUser(user)
 
-    switch (validateUser.status) {
-      case "Successful":
-        statusCode = 200
-        break;
-      case "Unauthenticated":
-        statusCode = 401
-        break;
+    if (validateUser.status === "Unauthenticated") {
+      return res.status(404).json({ statusMessage: "User not found" })
     }
-    return res.status(statusCode).json(validateUser)
+
+    else if (validateUser.status === "Error") {
+      return res.status(500).json({ statusMessage: "Error trying to authenticate user", error: validateUser.message })
+    }
+
+    const responseJson = {
+      statusMessage: validateUser.status,
+      token: validateUser.tk
+    }
+
+    return res.status(202).json(responseJson)
   }
 
   catch (err: any) {
-    return res.status(500).json({ status: "Error", message: err.message })
+    return res.status(500).json({ statusMessage: "Error trying to authenticate user", error: err.message })
   }
 
 }
