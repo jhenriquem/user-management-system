@@ -4,9 +4,10 @@ import loginController from "../controllers/loginController"
 import { checkUserExists } from "../middlewares/checkUserExists"
 import authJWToken from "../middlewares/authJWToken"
 import profileController from "../controllers/profileController"
+import checkPassedData from "../middlewares/checkPassedData"
 const userRouter = Router()
 
-userRouter.post("/register", checkUserExists, registerController)
+userRouter.post("/register", checkPassedData, checkUserExists, registerController)
 
 userRouter.post("/login", loginController)
 
