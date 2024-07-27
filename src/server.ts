@@ -13,7 +13,7 @@ export default class Server {
   private app: Application;
   private port: number | string;
   private paths = {
-    users: "/api/users",
+    user: "/api/user",
   };
 
   constructor() {
