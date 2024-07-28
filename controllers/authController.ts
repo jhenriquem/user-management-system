@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import authUser from "../services/authUser";
 import { authUserI } from "../types/userTypes";
 
-export default async function loginController(req: Request, res: Response) {
+export default async function authController(req: Request, res: Response) {
 
   try {
     const user: authUserI = req.body

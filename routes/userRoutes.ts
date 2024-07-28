@@ -1,17 +1,17 @@
 import { Router } from "express"
 import registerController from "../controllers/registerController"
-import loginController from "../controllers/loginController"
+import authController from "../controllers/authController"
 import { checkUserExists } from "../middlewares/checkUserExists"
 import authJWToken from "../middlewares/authJWToken"
-import profileController from "../controllers/profileController"
+import userController from "../controllers/userController"
 import checkPassedData from "../middlewares/checkPassedData"
 const userRouter = Router()
 
-userRouter.post("/register", checkPassedData, checkUserExists, registerController)
+userRouter.post("/auth", checkPassedData, authController)
 
-userRouter.post("/login", loginController)
+userRouter.post("/", checkPassedData, checkUserExists, registerController)
 
-userRouter.get("/profile", authJWToken, profileController)
+userRouter.get("/", authJWToken, userController)
 
 export default userRouter
 

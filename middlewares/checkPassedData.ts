@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import { UserInterface } from "../types/userTypes";
+import { authUserI, UserInterface } from "../types/userTypes";
 
 function checkPassedData(req: Request, res: Response, next: NextFunction) {
 
   try {
-    const userData: UserInterface = req.body
+    const userData: UserInterface | authUserI = req.body
 
     const resCheck = Object.values(userData).every((value) => !value)
 
