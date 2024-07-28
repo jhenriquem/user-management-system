@@ -27,11 +27,11 @@ Gets the authenticated user's data
 Example Response:
 ```json
 {
-    statusMessage : "Successful",
-    data : {
-        name : "",
-        lastname : "",
-        registration_date : "",
+    "statusMessage": "Successful",
+    "data" : {
+        "name" : "João",
+        "lastname" : "Santos",
+        "registration_date" : "",
     }
 }
 ```
@@ -50,7 +50,7 @@ Requires a JSON body with the following fields:
 Example Response:
 ```json
 {
-    statusMessage : "Success registering new user",
+    "statusMessage": "Success registering new user",
 }
 ```
 
@@ -63,10 +63,22 @@ Requires a JSON body with the following fields:
 - `password` : user password
 
 Example Response:
+
 ```json
 {
-    statusMessage : "Authenticated",
-    token : "jwt token"
+    "statusMessage": "Authenticated",
+    "token": "jwt token"
 }
 ```
 
+#### If there is an error 
+If there is any internal error
+
+Example Response :
+```json
+{
+    "statusMessage": "Error",
+    "error" : "error message"
+}
+
+```
