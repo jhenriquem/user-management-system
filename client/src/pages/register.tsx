@@ -13,6 +13,7 @@ function leftContainer() {
   const [password, setPassword] = useState<string>("")
   const [email, setEmail] = useState<string>("")
 
+  const basePath = import.meta.env.VITE_BASE_URI
   const registerAction = async () => {
     const userData: userRegisterI = {
       name: name,
@@ -25,7 +26,7 @@ function leftContainer() {
 
     if (response.statusMessage === "Success registering new user") {
       alert(response.statusMessage)
-      window.location.href = "/login"
+      window.location.href = `${basePath}/login`
     }
     else {
       setMessage(response.message)
@@ -81,7 +82,7 @@ function leftContainer() {
           />
           <div className="text-center">
             <p>Do you have an account ?</p>
-            <a href="/login" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Login</a>
+            <a href="login" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Login</a>
           </div>
 
           <span className="font-semibold text-center text-red-500 text-sm">{message}</span>

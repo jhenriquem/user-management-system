@@ -4,18 +4,19 @@ import LoginPage from './pages/login'
 import RegisterPage from './pages/register'
 import ProfilePage from './pages/userProfile'
 
+const basePath = import.meta.env.VITE_BASE_URI
 const route = createBrowserRouter([
   {
-    path: "/",
+    path: `${basePath}/`,
     element: <HomePage />
   }, {
-    path: "/login",
+    path: `${basePath}/login`,
     element: <LoginPage />
   }, {
-    path: "/register",
+    path: `${basePath}/register`,
     element: <RegisterPage />
   }, {
-    path: "/profile",
+    path: `${basePath}/profile`,
     element: <ProfilePage />
   }
 ])

@@ -1,11 +1,13 @@
 function btns() {
+  const basePath = import.meta.env.VITE_BASE_URI
   return (
+
     <div className="flex flex-wrap gap-4">
       <button className="btns" onClick={() => {
-        window.location.href = "/login"
+        window.location.href = `${basePath}/login`
       }}> Login</button>
       <button className="btns" onClick={() => {
-        window.location.href = "/register"
+        window.location.href = `${basePath}/register`
       }}> Register</button>
     </div>
   )

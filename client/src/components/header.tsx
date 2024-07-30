@@ -6,7 +6,7 @@ export default function HeaderComponent() {
   return (
     <header className="w-full fixed h-16 flex justify-between items-center p-7">
       <div className="flex items-center justify-center text-xl font-semibold cursor-pointer gap-x-3" onClick={() => {
-        window.location.href = "/"
+        window.location.href = "/user-management-system/"
       }} >
         <p className="text-violet-700" ><FaRegCircleUser /></p>
         <p>UserFlow</p>

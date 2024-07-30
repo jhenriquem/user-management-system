@@ -7,10 +7,11 @@ function ProfilePage() {
   const [registrationDate, setregistrationDate] = useState<string>("")
 
   const load = async () => {
+    const basePath = import.meta.env.VITE_BASE_URI
     const token = localStorage.getItem("jwtTK")
     if (!token) {
       alert("You are not authenticated, please login")
-      window.location.href = "/login"
+      window.location.href = `${basePath}/login`
     }
     else {
       const response = await getUserData()
@@ -24,7 +25,7 @@ function ProfilePage() {
       }
       else {
         alert(response.message)
-        window.location.href = "/login"
+        window.location.href = `${basePath}/login`
       }
     }
   }

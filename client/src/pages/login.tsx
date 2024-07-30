@@ -4,6 +4,8 @@ import { userAuthI } from "../types/userTypes";
 
 
 function leftContainer() {
+
+  const basePath = import.meta.env.VITE_BASE_URI
   const [message, setMessage] = useState<string>("")
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
@@ -13,7 +15,7 @@ function leftContainer() {
 
     if (response?.statusMessage === "Authenticated") {
       localStorage.setItem("jwtTK", response?.token as string)
-      window.location.href = "/profile"
+      window.location.href = `${basePath}/profile`
     }
     else if (response?.statusMessage === "Error") {
       setMessage(response?.message)
@@ -41,7 +43,7 @@ function leftContainer() {
           />
           <div className="text-center">
             <p>Don't have an account? </p>
-            <a href="/register" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Register</a>
+            <a href="register" className="cursor-pointer hover:text-lg text-violet-700 transition-all">Register</a>
           </div>
 
           <span className="text-center text-red-500 text-sm font-semibold">{message}</span>
