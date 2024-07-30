@@ -1,21 +1,19 @@
 import axios from "axios"
 async function getUserData() {
   try {
-
     const token = localStorage.getItem("jwtTK")
     const apiURL = import.meta.env.VITE_API_URL
     const headers = {
       Authorization: `Basic ${import.meta.env.VITE_API_KEY} ${token}`,
     };
 
-    const path = "/profile"
+    const response = await axios.get(apiURL, { headers })
 
-    if (!token) {
-      alert("Você não tem autorização para entra nessa página")
-      window.location.href = "/"
+    if (response.status == 401) {
+      alert("Your session has expired, please log in again")
+      window.location.href = "/login"
     }
     else {
-      const response = await axios.get(`${apiURL}${path}`, { headers })
       return response.data.data
     }
   }

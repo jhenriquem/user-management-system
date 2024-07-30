@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import HomePage from "./pages/home"
 import LoginPage from './pages/login'
 import RegisterPage from './pages/register'
-import ProfilePage from './pages/profile'
+import ProfilePage from './pages/userProfile'
 
 const route = createBrowserRouter([
   {

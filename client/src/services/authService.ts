@@ -1,16 +1,16 @@
 import axios from "axios";
-import { userLoginI } from "../types/userTypes";
+import { userAuthI } from "../types/userTypes";
 
 interface promiseResponseI {
-  status: string
+  statusMessage: string
   message: string
-  tk?: string
+  token?: string
 }
 
-async function loginService(data: userLoginI): Promise<promiseResponseI> {
+async function authService(data: userAuthI): Promise<promiseResponseI> {
   try {
     const apiURL = import.meta.env.VITE_API_URL
-    const path = "/login"
+    const path = "auth"
     const headers = {
       Authorization: `Basic ${import.meta.env.VITE_API_KEY}`,
     };
@@ -21,7 +21,7 @@ async function loginService(data: userLoginI): Promise<promiseResponseI> {
     return responseData
   } catch (err: any) {
     console.log(err.response.data)
-    return { status: "Error", message: err.response.data.message }
+    return { statusMessage: "Error", message: err.response.data.message }
   }
 }
-export default loginService
+export default authService

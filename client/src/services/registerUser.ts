@@ -3,8 +3,7 @@ import { userRegisterI } from "../types/userTypes";
 
 async function registerUser(data: userRegisterI) {
   try {
-    const apiURL = import.meta.env.VITE_API_URL
-    const path = "/register"
+    const apiURL: string = import.meta.env.VITE_API_URL
     const headers = {
       Authorization: `Basic ${import.meta.env.VITE_API_KEY}`,
     };
@@ -12,10 +11,15 @@ async function registerUser(data: userRegisterI) {
     // The api requests a user registration date 
     const dateOfRegister = new Date()
 
+    const reqData = {
+      ...data,
+      registration_date: dateOfRegister.toDateString()
 
+    }
+    console.log(reqData)
     const postResponse = await axios.post(
-      `${apiURL}${path}`,
-      { ...data, registration_date: dateOfRegister.toUTCString() },
+      apiURL,
+      reqData,
       { headers }
     )
 
