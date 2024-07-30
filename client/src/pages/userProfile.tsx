@@ -14,11 +14,18 @@ function ProfilePage() {
     }
     else {
       const response = await getUserData()
-      setuserName(response.name)
 
-      const date = new Date(response.registration_date as string)
-      const datearray = date.toUTCString().slice(0, 16)
-      setregistrationDate(datearray)
+      if (response.message === "Successful") {
+        setuserName(response.data.name)
+
+        const date = new Date(response.data.registration_date as string)
+        const datearray = date.toUTCString().slice(0, 16)
+        setregistrationDate(datearray)
+      }
+      else {
+        alert(response.message)
+        window.location.href = "/login"
+      }
     }
   }
   load()
@@ -29,7 +36,6 @@ function ProfilePage() {
         <h1 className="text-2xl font-semibold">Hi {userName},all good ? ? </h1>
         <p className="font-semibold">You registered in our system at {registrationDate}</p>
       </article>
-      )
       <article className="w-full h-1/2 lg:h-full lg:w-1/2 flex justify-center items-center">
         <img src="./profile-flow.png" alt="fluxograma de home para as outras páginas" className="w-11/12 max-w-xl min-w-72" />
       </article>

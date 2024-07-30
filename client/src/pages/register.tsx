@@ -23,8 +23,8 @@ function leftContainer() {
     }
     const response = await registerUser(userData)
 
-    if (response.status === "Successful") {
-      alert(response.message)
+    if (response.statusMessage === "Success registering new user") {
+      alert(response.statusMessage)
       window.location.href = "/login"
     }
     else {

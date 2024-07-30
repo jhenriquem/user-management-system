@@ -9,17 +9,11 @@ async function getUserData() {
 
     const response = await axios.get(apiURL, { headers })
 
-    if (response.status == 401) {
-      alert("Your session has expired, please log in again")
-      window.location.href = "/login"
-    }
-    else {
-      return response.data.data
-    }
+    return { message: "Successful", data: response.data.data }
   }
   catch (err: any) {
     console.log(err.message)
-    return err.message
+    return { message: err.message }
   }
 }
 

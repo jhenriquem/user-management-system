@@ -16,7 +16,6 @@ async function registerUser(data: userRegisterI) {
       registration_date: dateOfRegister.toDateString()
 
     }
-    console.log(reqData)
     const postResponse = await axios.post(
       apiURL,
       reqData,
