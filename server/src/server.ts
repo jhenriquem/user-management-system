@@ -75,7 +75,7 @@ export default class Server {
   }
 
   routes() {
-    this.app.use(this.paths.users, userRouter);
+    this.app.use(this.paths.user, userRouter);
   }
 
   online() {
