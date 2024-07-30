@@ -5,8 +5,7 @@ function checkPassedData(req: Request, res: Response, next: NextFunction) {
 
   try {
     const userData: UserInterface | authUserI = req.body
-
-    const resCheck = Object.values(userData).every((value) => !value)
+    const resCheck = Object.values(userData).every((value) => value !== "")
 
     if (!resCheck) {
       return res.status(400).json("Incomplete credentials")
