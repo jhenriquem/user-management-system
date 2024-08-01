@@ -9,17 +9,15 @@ const route = createBrowserRouter([
   {
     path: `${basePath}/`,
     element: <HomePage />,
-    children: [{
-      path: `${basePath}/login`,
-      element: <LoginPage />
-    }, {
-      path: `${basePath}/register`,
-      element: <RegisterPage />
-    }, {
-      path: `${basePath}/profile`,
-      element: <ProfilePage />
-    }
-    ]
+  }, {
+    path: `${basePath}/login`,
+    element: <LoginPage />
+  }, {
+    path: `${basePath}/register`,
+    element: <RegisterPage />
+  }, {
+    path: `${basePath}/profile`,
+    element: <ProfilePage />
   }
 ])
 

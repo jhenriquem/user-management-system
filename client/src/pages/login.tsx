@@ -5,7 +5,7 @@ import { userAuthI } from "../types/userTypes";
 
 function leftContainer() {
 
-  const basePath = import.meta.env.VITE_BASE_URI
+  const basePath = "/user-management-system"
   const [message, setMessage] = useState<string>("")
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")

@@ -13,7 +13,7 @@ function leftContainer() {
   const [password, setPassword] = useState<string>("")
   const [email, setEmail] = useState<string>("")
 
-  const basePath = import.meta.env.VITE_BASE_URI
+  const basePath = "/user-management-system"
   const registerAction = async () => {
     const userData: userRegisterI = {
       name: name,

@@ -1,5 +1,5 @@
 function btns() {
-  const basePath = import.meta.env.VITE_BASE_URI
+  const basePath = "/user-management-system"
   return (
 
     <div className="flex flex-wrap gap-4">
