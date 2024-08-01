@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import route from "./routes"
 import HeaderComponent from './components/header'
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HeaderComponent />
