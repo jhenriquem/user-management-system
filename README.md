@@ -1,30 +1,33 @@
-# 👨‍💻  User management system 
+<h1 align="center"> 👨‍💻  User management system </h1> 
 
-The user management system is a project of mine, which is focused on studies and practice
+Um sistema de gerenciamento de usuários, permite realizar a ação de cadastro e login, tendo uma página de perfil pessoal para o usuário. Cada página contém o respectivo fluxo de trabalho da ação a ser realizada( login, cadastro ou load das informações no perfil)
 
+##### :point_right: [ Project Live ](https://jhenriquem.github.io/user-management-system/) or [ API Link ](https://user-management-system-api-ez1z.onrender.com/api/user/)
+
+---
 ## 🌐 API
-All the API code will be in the server folder
+Todo o código da API estar na pasta server e na branch [server](https://github.com/jhenriquem/user-management-system/tree/server) 
 
-### 📋 Features
+### 📋 Funcionalidades e características 
 
-- I used REST architecture
-- The entire API was created in the node.js environment with typescript
-- I use mongoDB to store the data
-- The authentication system uses JWT to validate users
+- Uso da arquitetura REST
+- Toda a API foi criada no ambiente node.js/express com typescript
+- MongoDB para armazenar os dados
+- O sistema de autenticação usa JWT para validar os usuários
 
-### 🔑 Key
-The API key is a security system between client and server. You create it and make it available so that the client can make requests.
+### 🔑 Chave
+A chave da API é um sistema de segurança entre cliente e servidor. Você a cria e a disponibiliza para que o cliente possa fazer requisições.
 
-It is advisable to store it in an environment variable.
+É aconselhável armazená-la em uma variável de ambiente.
 
 ### 🚩 Endpoints
 
-All endpoints require an authorization header with the api key, as such: `Authorization: Basic <apikey>`
+Todos os endpoints exigem um cabeçalho de autorização com a chave da API, como: `Authorization: Basic <apikey>`
 
 #### GET `/api/user/`
-Gets the authenticated user's data
+Obtém os dados do usuário autenticado
 
-Example Response:
+Exemplo de resposta:
 ```json
 {
     "statusMessage": "Successful",
@@ -37,48 +40,48 @@ Example Response:
 ```
 
 #### POST `/api/user/`
-Add a new user
+Adicionar um novo usuário
 
-Requires a JSON body with the following fields: 
-- `name`: username
-- `lastname` : user last name
-- `date_of_birth` : user's date of birth
-- `registration_date` : user registration date 
-- `email` : user email
-- `password` : user password
+Requer um corpo JSON com os seguintes campos:
+- `name`: nome d usuário
+- `lastname` : sobrenome do usuário
+- `date_of_birth` : data de nascimento do usuário
+- `registration_date` : data de registro do usuário
+- `email` : e-mail do usuário
+- `password` : senha do usuário
 
-Example Response:
+Exemplo de resposta:
 ```json
 {
-    "statusMessage": "Success registering new user",
+"statusMessage": "Success registering new user",
 }
 ```
 
 #### POST `/api/user/auth`
-Authenticate the user
+Autenticar o usuário
 
+Requer um corpo JSON com os seguintes campos:
+- `email` : e-mail do usuário
+- `password` : senha do usuário
 
-Requires a JSON body with the following fields: 
-- `email` : user email
-- `password` : user password
-
-Example Response:
+Exemplo de resposta:
 
 ```json
 {
-    "statusMessage": "Authenticated",
-    "token": "jwt token"
+"statusMessage": "Authenticated",
+"token": "jwt token"
 }
 ```
 
-#### If there is an error 
-If there is any internal error
+#### ❌ Se houver um erro
+Se houver algum erro interno na API
 
-Example Response :
+Exemplo de resposta:
 ```json
 {
-    "statusMessage": "Error",
-    "error" : "error message"
+"statusMessage": "Error",
+"error" : "error message"
 }
 
 ```
+
